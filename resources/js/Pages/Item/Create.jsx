@@ -6,12 +6,16 @@ import { Head } from '@inertiajs/inertia-react';
 
 
 const Create = (props) => {
+    const { categories } = props;
+    console.log(categories);
     const { data, setData, errors, post } = useForm({
         name: "",
         number: "",
         content: "",
         publicated_at: "",
-        manufacture: ""
+        manufacture: "",
+        category_id: "1",
+        images: ""
     });
 
     function handleSubmit(e) {
@@ -116,6 +120,37 @@ const Create = (props) => {
                                     {errors.manufacture}
                                 </span>
                             </div>
+                            
+                            <div className="mb-4">
+                                <label className="">カテゴリー</label>
+                                <select 
+                                className="w-full px-4 py-2"
+                                onChange={(e) => setData('category_id',e.target.value)}
+                                >
+                                {categories.map((category) => (
+                                    <option key={category.id} value={category.id}>{category.name}</option>
+                                ))}
+                                </select>
+                                <span className="text-red-600">
+                                    {errors.category_id}
+                                </span>
+                            </div>
+                            
+                            <div className="mb-4">
+                                <label className="">写真追加</label>
+                                <input
+                                    type="file"
+                                    multiple
+                                    className="w-full px-4 py-2"
+                                    onChange={(e) =>
+                                        setData("images", e.target.files)
+                                    }
+                                />
+                                <span className="text-red-600">
+                                    {errors.images}
+                                </span>
+                            </div>
+                            
                             
                         </div>
                         <div className="mt-4">

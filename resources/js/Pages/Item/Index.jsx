@@ -35,6 +35,7 @@ const Index = (props) => {
                             <tr className="font-bold text-left">
                                 <th className="px-6 pt-5 pb-4">#</th>
                                 <th className="px-6 pt-5 pb-4">名前</th>
+                                <th className="px-6 pt-5 pb-4">カテゴリー</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,6 +55,14 @@ const Index = (props) => {
                                             className="flex items-center px-6 py-4 focus:text-indigo-700 focus:outline-none"
                                         >
                                             {item.name}
+                                        </InertiaLink>
+                                    </td>
+                                    <td className="border-t">
+                                        <InertiaLink
+                                            href={"/items/" + item.id}
+                                            className="flex items-center px-6 py-4 focus:text-indigo-700 focus:outline-none"
+                                        >
+                                            {item.category.name}
                                         </InertiaLink>
                                     </td>
                                 </tr>

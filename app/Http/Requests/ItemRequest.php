@@ -28,7 +28,8 @@ class ItemRequest extends FormRequest
             'number' => 'integer|min:1',
             'content' => 'required',
             'publicated_at' => 'date',
-            'manufacture' => 'required'
+            'manufacture' => 'required',
+            'category_id' => 'required'
         ];
     }
 }
