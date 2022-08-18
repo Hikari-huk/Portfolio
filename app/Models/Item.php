@@ -12,12 +12,23 @@ class Item extends Model
     
     use SoftDeletes;
     
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
+    
     protected $fillable = [
         'name',
         'number',
         'content',
         'date',
         'publicated_at',
-        'manufacture'
+        'manufacture',
+        'category_id'
     ];
 }

@@ -16,7 +16,7 @@ use App\Http\Controllers\ItemController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -31,11 +31,12 @@ Route::get('/dashboard', function () {
 
 
 Route::group(['middleware' => ['auth']],function(){
-    Route::get('/', [ItemController::class, 'index']);
+    Route::get('/', [ItemController::class, 'index'])->name('item.index');
     Route::post('/items',  [ItemController::class, 'store']);
     Route::get('/items/create',  [ItemController::class, 'create']);
     Route::get('/items/{item}',  [ItemController::class, 'show']);
-    Route::put('/items/{item}',  [ItemController::class, 'update']);
+    //Inertia.jsではファイルの処理においてputが使えないためpostで更新する
+    Route::post('/items/{item}',  [ItemController::class, 'update']);
     Route::delete('/items/{item}',  [ItemController::class, 'delete']);
     Route::get('/items/{item}/edit',  [ItemController::class, 'edit']);
 });

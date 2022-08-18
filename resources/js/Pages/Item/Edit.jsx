@@ -5,19 +5,24 @@ import Authenticated from '@/Layouts/Authenticated';
 import { Head } from '@inertiajs/inertia-react';
 
 const Edit = (props) => {
-    const { item } = props;
+    const { item , categories} = props;
+    console.log(props);
     
-    const { data, setData, put, errors } = useForm({
+    //inertia.jsではファイルの処理においてputが使えないため,postで送信する
+    const { data, setData, post, errors } = useForm({
         name: item.name || "",
         number: item.number || "",
         content: item.content || "",
         publicated_at: item.publicated_at || "",
-        manufacture: item.manufacture || ""
+        manufacture: item.manufacture || "",
+        category_id: item.category_id || "",
+        images: ""
     });
+    console.log(data);
 
     function handleSubmit(e) {
         e.preventDefault();
-        put(`/items/${item.id}`);
+        post(`/items/${item.id}`);
     }
     const handleDeleteItem = (id) => {
         Inertia.delete(`/items/${id}`, {
@@ -109,6 +114,41 @@ const Edit = (props) => {
                                 />
                                 <span className="text-red-600">
                                     {errors.manufacture}
+                                </span>
+                            </div>
+                            
+                            <div className="mb-4">
+                                <label className="">カテゴリー</label>
+                                <select 
+                                className="w-full px-4 py-2"
+                                onChange={(e) => setData('category_id',e.target.value)}
+                                >
+                                {categories.map((category) => {
+                                    
+                                    if(data.category_id == category.id){
+                                        return <option key={category.id} value={category.id} selected>{category.name}</option>;
+                                    }else{
+                                        return <option key={category.id} value={category.id}>{category.name}</option>;
+                                    }
+                                
+                                })}
+                                </select>
+                                <span className="text-red-600">
+                                    {errors.category_id}
+                                </span>
+                            </div>
+                             <div className="mb-4">
+                                <label className="">写真追加</label>
+                                <input
+                                    type="file"
+                                    multiple
+                                    className="w-full px-4 py-2"
+                                    onChange={(e) =>
+                                        setData("images", e.target.files)
+                                    }
+                                />
+                                <span className="text-red-600">
+                                    {errors.images}
                                 </span>
                             </div>
                             
