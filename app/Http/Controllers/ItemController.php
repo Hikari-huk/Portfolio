@@ -22,10 +22,9 @@ class ItemController extends Controller
     public function show(Item $item)
     {
         
+        $item = Item::with('category','images')->find($item->id);
         return Inertia::render("Item/Show",[
-            'item' => $item,
-            'category' => $item->category()->get(),
-            'images' => $item->images()->get()
+            'item' => $item
             ]);
     }
     
@@ -56,6 +55,7 @@ class ItemController extends Controller
     
     public function edit(Item $item, Category $categories)
     {
+        $item = Item::with('category','images')->find($item->id);
         return Inertia::render("Item/Edit",[
             'item' => $item,
             'categories' => $categories->get()
@@ -64,11 +64,16 @@ class ItemController extends Controller
     
     public function update(ItemRequest $request, Item $item)
     {
+        
         $input = $request->all();
         $item->fill($input)->save();
-        //imagesの追加
-        $item->images()->delete();//元々関連付けられている画像を削除
+        //選択された関連付けされている画像を削除する
         
+        if(array_key_exists('deleteArray', $input)){
+            foreach($input["deleteArray"] as $delete_image_id){
+                $item->images()->find($delete_image_id)->delete();
+            }
+        }
         $input_images = $request->file("images");
         //送信データにファイルがあるかどうか
         if($input_images!=null){

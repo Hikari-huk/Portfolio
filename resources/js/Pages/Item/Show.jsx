@@ -5,9 +5,11 @@ import { Link, Head } from '@inertiajs/inertia-react'
 
 
 const Show = (props) => {
-    const { item ,category, images} = props;
+    const { item } = props;
     
-    console.log(images);
+    console.log(item);
+    console.log(item.category);
+    console.log(item.images);
     const handleDeleteItem = (id) => {
         Inertia.delete(`/items/${id}`, {
             onBefore: () => confirm("本当に削除しますか？"),
@@ -66,15 +68,23 @@ const Show = (props) => {
                 </div>
                 <div>
                     <h3>カテゴリー</h3>
-                    <p> { category[0].name }</p>
+                    <p> { item.category.name }</p>
                 </div>
                 
                  <div>
                     <h3>画像</h3>
-                    {images.map((image) => {
+                    <div className="flex">
+                    {item.images.map((image) => {
                     console.log(image);
-                        return <img src={image.image_path} />
+                        return <img className="w-64 mx-5" src={image.image_path} />
                     })}
+                    </div>
+                </div>
+                <div>
+                    <Link href={"/items/"+item.id+"/borrow"}>借りる</Link>
+                </div>
+                <div>
+                    <Link href={"/items/"+item.id+"/return"}>返却</Link>
                 </div>
                 
                 <div>

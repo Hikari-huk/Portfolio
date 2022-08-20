@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\StockController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,12 @@ Route::group(['middleware' => ['auth']],function(){
     Route::post('/items/{item}',  [ItemController::class, 'update']);
     Route::delete('/items/{item}',  [ItemController::class, 'delete']);
     Route::get('/items/{item}/edit',  [ItemController::class, 'edit']);
+    
+    //Stockのルーティング
+    Route::get('/items/{item}/borrow',[StockController::class,'create']);
+    Route::post('/stocks',[StockController::class,'store']);
+    Route::get('/items/{item}/return', [StockController::class, 'edit']);
+    
 });
 
 require __DIR__.'/auth.php';
