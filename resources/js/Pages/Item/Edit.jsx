@@ -6,7 +6,7 @@ import { Head } from '@inertiajs/inertia-react';
 
 const Edit = (props) => {
     const { item , categories} = props;
-    console.log(props);
+    
     
     //inertia.jsではファイルの処理においてputが使えないため,postで送信する
     const { data, setData, post, errors } = useForm({
@@ -16,14 +16,25 @@ const Edit = (props) => {
         publicated_at: item.publicated_at || "",
         manufacture: item.manufacture || "",
         category_id: item.category_id || "",
+        deleteArray: [],
         images: ""
     });
+    
     console.log(data);
-
     function handleSubmit(e) {
         e.preventDefault();
         post(`/items/${item.id}`);
     }
+    
+    function handleChangeCheckbox(e){
+        if(data.deleteArray.includes(e.target.value)){
+            setData('deleteArray',data.deleteArray.filter(id => id !== e.target.value));
+        }else{
+            setData('deleteArray',[...data.deleteArray,e.target.value]);
+        }
+        
+    }
+    
     const handleDeleteItem = (id) => {
         Inertia.delete(`/items/${id}`, {
             onBefore: () => confirm("本当に削除しますか？"),
@@ -137,7 +148,27 @@ const Edit = (props) => {
                                     {errors.category_id}
                                 </span>
                             </div>
-                             <div className="mb-4">
+                            <div>
+                                <h3>画像</h3>
+                                <div className="flex">
+                                {item.images.map((image) => {
+                                    return (
+                                        <div name="check_delete_image">
+                                            <img className="aspect-auto w-64 mx-5" src={image.image_path} />
+                                            <input
+                                                type="checkbox"
+                                                value={image.id}
+                                                checked={data.deleteArray.includes(String(image.id))}
+                                                onChange={handleChangeCheckbox}
+                                            />
+                                            
+                                        </div>
+                                    );
+                                })}
+                                </div>
+                            </div>
+                            
+                            <div className="mb-4">
                                 <label className="">写真追加</label>
                                 <input
                                     type="file"
