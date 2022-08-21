@@ -91,6 +91,7 @@ class ItemController extends Controller
     
     public function delete(Item $item)
     {
+        dd("hello");
         $item->images()->delete();
         $item->delete();
         

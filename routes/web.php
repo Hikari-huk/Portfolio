@@ -42,9 +42,13 @@ Route::group(['middleware' => ['auth']],function(){
     Route::get('/items/{item}/edit',  [ItemController::class, 'edit']);
     
     //Stockのルーティング
-    Route::get('/items/{item}/borrow',[StockController::class,'create']);
-    Route::post('/stocks',[StockController::class,'store']);
-    Route::get('/items/{item}/return', [StockController::class, 'edit']);
+    Route::get('/stock', [StockController::class,'index']);
+    Route::get('/stock/{item}/borrow', [StockController::class,'create']);
+    Route::post('/stock', [StockController::class,'store']);
+    Route::get('/stock/{item}', [StockController::class,'show']);
+    Route::get('/stock/{item}/return', [StockController::class, 'edit']);
+    Route::put('/stock/{item}', [StockController::class,'update']);
+    Route::delete('/stock/{item}', [StockController::class,'delete']);
     
 });
 

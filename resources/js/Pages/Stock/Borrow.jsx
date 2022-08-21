@@ -15,7 +15,7 @@ const Borrow = (props) => {
    
    function handleSubmit(e) {
         e.preventDefault();
-        post("/stocks");
+        post("/stock");
     }
    
    return (

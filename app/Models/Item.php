@@ -24,7 +24,7 @@ class Item extends Model
     
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withPivot('returned_at');
     }
     
     protected $fillable = [

@@ -45,6 +45,6 @@ class User extends Authenticatable
     
     public function items()
     {
-        return $this->belongsToMany(Item::class);
+        return $this->belongsToMany(Item::class)->withPivot("returned_at");
     }
 }
