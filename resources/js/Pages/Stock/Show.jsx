@@ -7,14 +7,6 @@ import { Link, Head } from '@inertiajs/inertia-react'
 const Show = (props) => {
     const { item } = props;
     
-    console.log(item);
-    console.log(item.category);
-    console.log(item.images);
-    const handleDeleteItem = (id) => {
-        Inertia.delete(`/items/${id}`, {
-            onBefore: () => confirm("本当に削除しますか？"),
-        })
-    }
 
     return (
         <Authenticated 
@@ -30,17 +22,16 @@ const Show = (props) => {
                 <div className="flex items-center justify-between mb-6">
                     <Link
                         className="px-6 py-2 text-white bg-green-500 rounded-md focus:outline-none"
-                        href={"/items/"+item.id+"/edit"}
+                        href={"/stock/"+item.id+"/borrow"}
                     >
-                        編集
+                        借用
                     </Link>
-                    <button
-                        type="button"
+                    <Link
                         className="px-6 py-2 text-white bg-green-500 rounded-md focus:outline-none"
-                        onClick={() => handleDeleteItem(item.id)}
+                        href={"/stock/"+item.id+"/return"}
                     >
-                        削除
-                    </button>
+                        返却
+                    </Link>
                     
                 </div>
                 
@@ -76,14 +67,14 @@ const Show = (props) => {
                     <div className="flex">
                     {item.images.map((image) => {
                     console.log(image);
-                        return <img className="w-64 mx-5" src={image.image_path} />;
+                        return <img className="w-64 mx-5" src={image.image_path} />
                     })}
                     </div>
                 </div>
                 
                 
                 <div>
-                    <Link href="/">戻る</Link>
+                    <Link href="/stock">戻る</Link>
                 </div>
             </div>
             
