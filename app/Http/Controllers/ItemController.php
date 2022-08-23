@@ -16,21 +16,21 @@ class ItemController extends Controller
     public function index()
     {
        $items = Item::with('category')->get();
-        return Inertia::render("Item/Index",['items' => $items]);
+        return Inertia::render("Admin/Item/Index",['items' => $items]);
     }
     
     public function show(Item $item)
     {
         
         $item = Item::with('category','images')->find($item->id);
-        return Inertia::render("Item/Show",[
+        return Inertia::render("Admin/Item/Show",[
             'item' => $item
             ]);
     }
     
     public function create(Category $categories)
     {
-        return Inertia::render("Item/Create",['categories' => $categories->get()]);
+        return Inertia::render("Admin/Item/Create",['categories' => $categories->get()]);
     }
     
     public function store(ItemRequest $request, Item $item)
@@ -50,13 +50,13 @@ class ItemController extends Controller
             }
         }
         
-        return redirect("/");
+        return redirect("/admin");
     }
     
     public function edit(Item $item, Category $categories)
     {
         $item = Item::with('category','images')->find($item->id);
-        return Inertia::render("Item/Edit",[
+        return Inertia::render("Admin/Item/Edit",[
             'item' => $item,
             'categories' => $categories->get()
             ]);
@@ -67,8 +67,8 @@ class ItemController extends Controller
         
         $input = $request->all();
         $item->fill($input)->save();
-        //選択された関連付けされている画像を削除する
         
+        //選択された関連付けされている画像を削除する
         if(array_key_exists('deleteArray', $input)){
             foreach($input["deleteArray"] as $delete_image_id){
                 $item->images()->find($delete_image_id)->delete();
@@ -86,15 +86,14 @@ class ItemController extends Controller
             }
         }
         
-        return redirect("/items/".$item->id);
+        return redirect("/admin/items/".$item->id);
     }
     
     public function delete(Item $item)
     {
-        dd("hello");
         $item->images()->delete();
         $item->delete();
         
-        return redirect("/");
+        return redirect("/admin");
     }
 }

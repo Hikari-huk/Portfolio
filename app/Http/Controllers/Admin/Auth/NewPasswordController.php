@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin\Auth;
+
 
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\PasswordReset;
@@ -22,7 +23,7 @@ class NewPasswordController extends Controller
      */
     public function create(Request $request)
     {
-        return Inertia::render('User/Auth/ResetPassword', [
+        return Inertia::render('Admin/Auth/ResetPassword', [
             'email' => $request->email,
             'token' => $request->route('token'),
         ]);

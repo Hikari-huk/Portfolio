@@ -6,20 +6,19 @@ import { Head } from '@inertiajs/inertia-react';
 
 const Index = (props) => {
     const { items } = props;
-    console.log(items);
-    console.log(typeof items);
+   
     
 
     return (
         <Authenticated
             auth={props.auth}
             errors={props.errors}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">StockIndex</h2>}
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">在庫一覧</h2>}
         >
-        <Head title="StockIndex" />
+        <Head title="在庫一覧" />
         <div>
             <div className="container mx-auto">
-                <h1 className="mb-8 text-3xl font-bold text-center">StockItems</h1>
+                <h1 className="mb-8 text-3xl font-bold text-center">在庫一覧</h1>
                 <div className="flex items-center justify-between mb-6">
                     
                 </div>
@@ -68,7 +67,7 @@ const Index = (props) => {
                                         className="px-6 py-4 border-t"
                                         colSpan="4"
                                     >
-                                        No contacts found.
+                                        在庫がありません.
                                     </td>
                                 </tr>
                             )}

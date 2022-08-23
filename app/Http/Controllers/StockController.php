@@ -15,12 +15,12 @@ class StockController extends Controller
     
     public function index(){
         $items = Item::with('category')->get();
-        return Inertia::render('Stock/Index',['items' => $items]);
+        return Inertia::render('User/Stock/Index',['items' => $items]);
     }
     
     public function show(Item $item){
         $item = Item::with('category','images')->find($item->id);
-        return Inertia::render("Stock/Show",[
+        return Inertia::render("User/Stock/Show",[
             'item' => $item
             ]);
     }
@@ -29,7 +29,7 @@ class StockController extends Controller
     //借用画面の表示
     public function create(Item $item){
         $item = Item::with('category','images')->find($item->id);
-        return Inertia::render('Stock/Borrow',[
+        return Inertia::render('User/Stock/Borrow',[
             'item' => $item
             ]);
     }
@@ -53,7 +53,7 @@ class StockController extends Controller
         
         $user = Auth::user();
         $day = $user->items()->where('item_id',$item->id)->first()->pivot->returned_at;
-        return Inertia::render('Stock/Return',[
+        return Inertia::render('User/Stock/Return',[
             'item' => $item->with('category','images')->find($item->id),
             'returned_at' => $day
         ]);

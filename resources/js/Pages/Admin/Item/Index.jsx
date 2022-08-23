@@ -1,13 +1,11 @@
 import React from "react";
 import { Inertia } from "@inertiajs/inertia";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
-import Authenticated from '@/Layouts/Authenticated';
+import Authenticated from '@/Layouts/AdminAuthenticated';
 import { Head } from '@inertiajs/inertia-react';
 
 const Index = (props) => {
     const { items } = props;
-    console.log(items);
-    console.log(typeof items);
     
 
     return (
@@ -23,7 +21,7 @@ const Index = (props) => {
                 <div className="flex items-center justify-between mb-6">
                     <InertiaLink
                         className="px-6 py-2 text-white bg-green-500 rounded-md focus:outline-none"
-                        href="/items/create"
+                        href="/admin/items/create"
                     >
                         新規作成
                     </InertiaLink>
@@ -43,7 +41,7 @@ const Index = (props) => {
                                 <tr key={item.id} className="">
                                     <td className="border-t">
                                         <InertiaLink
-                                            href={"/items/" + item.id}
+                                            href={"/admin/items/" + item.id}
                                             className="flex items-center px-6 py-4 focus:text-indigo-700 focus:outline-none"
                                         >
                                             {item.id}
@@ -51,7 +49,7 @@ const Index = (props) => {
                                     </td>
                                     <td className="border-t">
                                         <InertiaLink
-                                            href={"/items/" + item.id}
+                                            href={"/admin/items/" + item.id}
                                             className="flex items-center px-6 py-4 focus:text-indigo-700 focus:outline-none"
                                         >
                                             {item.name}
@@ -59,7 +57,7 @@ const Index = (props) => {
                                     </td>
                                     <td className="border-t">
                                         <InertiaLink
-                                            href={"/items/" + item.id}
+                                            href={"/admin/items/" + item.id}
                                             className="flex items-center px-6 py-4 focus:text-indigo-700 focus:outline-none"
                                         >
                                             {item.category.name}
