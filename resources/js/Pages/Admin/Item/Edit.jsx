@@ -1,7 +1,7 @@
 import React from "react";
 import { Inertia } from "@inertiajs/inertia";
 import { InertiaLink, usePage, useForm } from "@inertiajs/inertia-react";
-import Authenticated from '@/Layouts/Authenticated';
+import Authenticated from '@/Layouts/AdminAuthenticated';
 import { Head } from '@inertiajs/inertia-react';
 
 const Edit = (props) => {
@@ -23,7 +23,7 @@ const Edit = (props) => {
     console.log(data);
     function handleSubmit(e) {
         e.preventDefault();
-        post(`/items/${item.id}`);
+        post(`/admin/items/${item.id}`);
     }
     
     function handleChangeCheckbox(e){
@@ -36,7 +36,7 @@ const Edit = (props) => {
     }
     
     const handleDeleteItem = (id) => {
-        Inertia.delete(`/items/${id}`, {
+        Inertia.delete(`/admin/items/${id}`, {
             onBefore: () => confirm("本当に削除しますか？"),
         })
     }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Inertia } from "@inertiajs/inertia";
 import { Link, useForm, usePage } from "@inertiajs/inertia-react";
-import Authenticated from '@/Layouts/Authenticated';
+import Authenticated from '@/Layouts/AdminAuthenticated';
 import { Head } from '@inertiajs/inertia-react';
 
 
@@ -22,7 +22,7 @@ const Create = (props) => {
         e.preventDefault();
         // Inertia.post(route("posts.store"),data);
 
-        post("/items");
+        post("/admin/items");
     }
     console.log(data);
 
@@ -39,7 +39,7 @@ const Create = (props) => {
                 <div>
                     <h1 className="mb-8 text-3xl font-bold">
                         <Link
-                            href="/"
+                            href="/admin"
                             className="text-indigo-600 hover:text-indigo-700"
                         >
                             Items

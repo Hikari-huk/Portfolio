@@ -1,6 +1,6 @@
 import React from "react";
 import { Inertia } from "@inertiajs/inertia";
-import Authenticated from "@/Layouts/Authenticated";
+import Authenticated from "@/Layouts/AdminAuthenticated";
 import { Link, Head } from '@inertiajs/inertia-react'
 
 
@@ -11,7 +11,7 @@ const Show = (props) => {
     console.log(item.category);
     console.log(item.images);
     const handleDeleteItem = (id) => {
-        Inertia.delete(`/items/${id}`, {
+        Inertia.delete(`/admin/items/${id}`, {
             onBefore: () => confirm("本当に削除しますか？"),
         })
     }
@@ -30,7 +30,7 @@ const Show = (props) => {
                 <div className="flex items-center justify-between mb-6">
                     <Link
                         className="px-6 py-2 text-white bg-green-500 rounded-md focus:outline-none"
-                        href={"/items/"+item.id+"/edit"}
+                        href={"/admin/items/"+item.id+"/edit"}
                     >
                         編集
                     </Link>
@@ -83,7 +83,7 @@ const Show = (props) => {
                 
                 
                 <div>
-                    <Link href="/">戻る</Link>
+                    <Link href="/admin">戻る</Link>
                 </div>
             </div>
             

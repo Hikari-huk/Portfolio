@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin\Auth;
+
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class PasswordResetLinkController extends Controller
      */
     public function create()
     {
-        return Inertia::render('User/Auth/ForgotPassword', [
+        return Inertia::render('Admin/Auth/ForgotPassword', [
             'status' => session('status'),
         ]);
     }

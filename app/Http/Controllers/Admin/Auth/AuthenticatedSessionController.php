@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
@@ -19,7 +19,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        return Inertia::render('User/Auth/Login', [
+        return Inertia::render('Admin/Auth/Login', [
             'canResetPassword' => Route::has('password.request'),
             'status' => session('status'),
         ]);
@@ -37,7 +37,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->intended(RouteServiceProvider::ADMIN_HOME);
     }
 
     /**
@@ -54,6 +54,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/admin/login');
     }
 }

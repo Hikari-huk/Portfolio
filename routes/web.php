@@ -17,7 +17,7 @@ use App\Http\Controllers\StockController;
 |
 */
 
-Route::get('/welcome', function () {
+Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -27,22 +27,17 @@ Route::get('/welcome', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('User/Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('admin/dashboard', function () {
+    return Inertia::render('Admin/Dashboard');
+})->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
 
 
 Route::group(['middleware' => ['auth']],function(){
-    Route::get('/', [ItemController::class, 'index'])->name('item.index');
-    Route::post('/items',  [ItemController::class, 'store']);
-    Route::get('/items/create',  [ItemController::class, 'create']);
-    Route::get('/items/{item}',  [ItemController::class, 'show']);
-    //Inertia.jsではファイルの処理においてputが使えないためpostで更新する
-    Route::post('/items/{item}',  [ItemController::class, 'update']);
-    Route::delete('/items/{item}',  [ItemController::class, 'delete']);
-    Route::get('/items/{item}/edit',  [ItemController::class, 'edit']);
-    
     //Stockのルーティング
-    Route::get('/stock', [StockController::class,'index']);
+    Route::get('/stock', [StockController::class,'index'])->name('stock.index');
     Route::get('/stock/{item}/borrow', [StockController::class,'create']);
     Route::post('/stock', [StockController::class,'store']);
     Route::get('/stock/{item}', [StockController::class,'show']);
@@ -52,4 +47,17 @@ Route::group(['middleware' => ['auth']],function(){
     
 });
 
+Route::group(['middleware' => ['auth:admin']], function(){
+    Route::get('/admin', [ItemController::class, 'index'])->name('admin.item.index');
+    Route::post('/admin/items',  [ItemController::class, 'store']);
+    Route::get('/admin/items/create',  [ItemController::class, 'create'])->name('admin.item.create');
+    Route::get('/admin/items/{item}',  [ItemController::class, 'show']);
+    //Inertia.jsではファイルの処理においてputが使えないためpostで更新する
+    Route::post('/admin/items/{item}',  [ItemController::class, 'update']);
+    Route::delete('/admin/items/{item}',  [ItemController::class, 'delete']);
+    Route::get('/admin/items/{item}/edit',  [ItemController::class, 'edit']);
+});
+
 require __DIR__.'/auth.php';
+
+require __DIR__.'/admin.php';
