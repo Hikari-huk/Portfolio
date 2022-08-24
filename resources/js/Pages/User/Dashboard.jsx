@@ -1,6 +1,6 @@
 import React from 'react';
 import Authenticated from '@/Layouts/Authenticated';
-import { Head } from '@inertiajs/inertia-react';
+import { Head , Link} from '@inertiajs/inertia-react';
 
 export default function Dashboard(props) {
     return (
@@ -17,6 +17,9 @@ export default function Dashboard(props) {
                         <div className="p-6 bg-white border-b border-gray-200">You're logged in!</div>
                     </div>
                 </div>
+            </div>
+            <div>
+                <Link href="/orders">Order</Link>
             </div>
         </Authenticated>
     );

@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("user_id");
-            $table->string("item_name");
-            $table->unsignedBigInteger("item_number");
-            $table->string("item_url");
-            $table->string("reason");
+            $table->string("name");
+            $table->unsignedBigInteger("number")->comment('欲しい数');
+            $table->string("url")->comment('欲しい商品のURL');
+            $table->string("reason")->comment('欲しい理由');
             $table->timestamps();
         });
     }
