@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\StockController;
+Use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +37,7 @@ Route::get('admin/dashboard', function () {
 
 
 Route::group(['middleware' => ['auth']],function(){
-    //Stockのルーティング
+    //在庫管理のルーティング
     Route::get('/stock', [StockController::class,'index'])->name('stock.index');
     Route::get('/stock/{item}/borrow', [StockController::class,'create']);
     Route::post('/stock', [StockController::class,'store']);
@@ -44,6 +45,15 @@ Route::group(['middleware' => ['auth']],function(){
     Route::get('/stock/{item}/return', [StockController::class, 'edit']);
     Route::put('/stock/{item}', [StockController::class,'update']);
     Route::delete('/stock/{item}', [StockController::class,'delete']);
+    
+    //Orderのルーティング
+    Route::get('/orders', [OrderController::class,'index'])->name('order.index');
+    Route::get('/orders/create', [OrderController::class, 'create'])->name('order.create');
+    Route::post('/orders', [OrderController::class, 'store']);
+    Route::get('/orders/{order}', [OrderController::class, 'show']);
+    Route::get('/orders/{order}/edit', [OrderController::class, 'edit']);
+    Route::put('/orders/{order}', [OrderController::class, 'update']);
+    Route::delete('/orders/{order}', [OrderController::class, 'delete']);
     
 });
 
