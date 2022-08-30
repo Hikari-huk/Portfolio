@@ -7,7 +7,6 @@ import { Head } from '@inertiajs/inertia-react';
 const Index = (props) => {
     const { items } = props;
    
-    
 
     return (
         <Authenticated

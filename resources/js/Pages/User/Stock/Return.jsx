@@ -4,6 +4,7 @@ import { Link, useForm, usePage } from "@inertiajs/inertia-react";
 import Authenticated from '@/Layouts/Authenticated';
 import { Head } from '@inertiajs/inertia-react';
 
+
 const Borrow = (props) => {
    const { item , returned_at} = props;
    
@@ -36,6 +37,7 @@ const Borrow = (props) => {
         <Head title="Return" />
         
         <div className="mt-20">
+        
             <div className="container flex flex-col justify-center mx-auto">
                 <div>
                     <h1 className="mb-8 text-3xl font-bold">

@@ -14,12 +14,12 @@ class StockController extends Controller
 {
     
     public function index(){
-        $items = Item::with('category')->get();
+        $items = Item::with('category')->groupby('name')->get();
         return Inertia::render('User/Stock/Index',['items' => $items]);
     }
     
     public function show(Item $item){
-        $item = Item::with('category','images')->find($item->id);
+        $item = Item::with('category','images','users')->find($item->id);
         return Inertia::render("User/Stock/Show",[
             'item' => $item
             ]);

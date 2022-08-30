@@ -15,13 +15,12 @@ class ItemController extends Controller
     //
     public function index()
     {
-       $items = Item::with('category')->get();
+       $items = Item::with('category','images')->groupby('name')->get();
         return Inertia::render("Admin/Item/Index",['items' => $items]);
     }
     
     public function show(Item $item)
     {
-        
         $item = Item::with('category','images')->find($item->id);
         return Inertia::render("Admin/Item/Show",[
             'item' => $item
@@ -37,18 +36,24 @@ class ItemController extends Controller
     {   
         //item内容追加
         $input = $request->all();
-        $item->fill($input)->save();
+        //numberの数だけレコードを追加
+        for($i=0;$i<$request->number;$i++){
+            $item = new Item();
+            $item->fill($input)->save();
         //imagesの追加
-        $input_images = $request->file("images");
-        if($input_images!=null){
-            foreach($input_images as $image){
-                $images = new Image();
-                $path = Storage::disk('s3')->putFile('/', $image);
-                $images->item_id = $item->id;
-                $images->image_path = Storage::disk('s3')->url($path);
-                $images->save();
+            $input_images = $request->file("images");
+            if($input_images!=null){
+                foreach($input_images as $image){
+                    $images = new Image();
+                    $path = Storage::disk('s3')->putFile('/', $image);
+                    $images->item_id = $item->id;
+                    $images->image_path = Storage::disk('s3')->url($path);
+                    $images->save();
+                }
             }
         }
+        
+        
         
         return redirect("/admin");
     }
