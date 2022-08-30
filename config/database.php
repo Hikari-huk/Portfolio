@@ -65,9 +65,9 @@ return [
                 'NO_ENGINE_SUBSTITUTION'
             ],
             'engine' => null,
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
+            // 'options' => extension_loaded('pdo_mysql') ? array_filter([
+            //     PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            // ]) : [],
         ],
 
         'pgsql' => [
