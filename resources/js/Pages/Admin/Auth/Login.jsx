@@ -33,7 +33,7 @@ export default function Login({ status, canResetPassword }) {
     return (
         <Guest>
             <Head title="Log in" />
-
+            
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
 
             <ValidationErrors errors={errors} />
@@ -65,7 +65,7 @@ export default function Login({ status, canResetPassword }) {
                         handleChange={onHandleChange}
                     />
                 </div>
-
+                
                 <div className="block mt-4">
                     <label className="flex items-center">
                         <Checkbox name="remember" value={data.remember} handleChange={onHandleChange} />
@@ -73,20 +73,25 @@ export default function Login({ status, canResetPassword }) {
                         <span className="ml-2 text-sm text-gray-600">Remember me</span>
                     </label>
                 </div>
+                <div className="flex items-center mt-4">
+                    <Link href={route('admin.register')} className="mr-4 text-sm text-gray-700 underline ">
+                        Register
+                    </Link>
+                    <div className="ml-auto">
+                    
+                        {canResetPassword && (
+                            <Link
+                                href={route('admin.password.request')}
+                                className="underline text-sm text-gray-600 hover:text-gray-900"
+                            >
+                                Forgot your password?
+                            </Link>
+                        )}
 
-                <div className="flex items-center justify-end mt-4">
-                    {canResetPassword && (
-                        <Link
-                            href={route('admin.password.request')}
-                            className="underline text-sm text-gray-600 hover:text-gray-900"
-                        >
-                            Forgot your password?
-                        </Link>
-                    )}
-
-                    <Button className="ml-4" processing={processing}>
-                        Log in
-                    </Button>
+                        <Button className="ml-4" processing={processing}>
+                            Log in
+                        </Button>
+                    </div>
                 </div>
             </form>
         </Guest>

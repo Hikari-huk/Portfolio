@@ -30,141 +30,173 @@ const Create = (props) => {
         <Authenticated
             auth={props.auth}
             errors={props.errors}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Create</h2>}
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">在庫作成</h2>}
         >
         <Head title="Create" />
-        
-        <div className="mt-20">
-            <div className="container flex flex-col justify-center mx-auto">
-                <div>
-                    <h1 className="mb-8 text-3xl font-bold">
-                        <Link
-                            href="/admin"
-                            className="text-indigo-600 hover:text-indigo-700"
-                        >
-                            Items
-                        </Link>
-                        <span className="font-medium text-indigo-600"> / </span>
-                        Create
-                    </h1>
-                </div>
-                <div className="max-w-6xl p-8 bg-white rounded shadow">
-                    <form name="createForm" onSubmit={handleSubmit}>
-                        <div className="flex flex-col">
-                            <div className="mb-4">
-                                <label className="">名前</label>
-                                <input
-                                    type="text"
-                                    className="w-full px-4 py-2"
-                                    onChange={(e) =>
-                                        setData("name", e.target.value)
-                                    }
-                                />
-                                <span className="text-red-600">
-                                    {errors.name}
-                                </span>
-                            </div>
+        <div className="flex justify-center py-12 px-12 md:px-24 lg:px-40 xl:px-56 shodow">
+                <div class="w-full bg-white py-10 sm:py-10 lg:py-12 rounded-md">
+                    <div class="max-w-screen-xl px-4 md:px-8 mx-auto">
+                        <form name="createForm" onSubmit={handleSubmit}>
+                            <div className="flex flex-col w-full">
                             
-                            <div className="mb-4">
-                                <label className="">数量</label>
-                                <input
-                                    type="number"
-                                    className="w-full px-4 py-2"
-                                    min="1"
-                                    onChange={(e) =>
-                                        setData("number", e.target.value)
-                                    }
-                                />
-                                <span className="text-red-600">
-                                    {errors.number}
-                                </span>
-                            </div>
+                                <div className="flex-col py-4">
+                                    <div className="md:flex">
+                                        <div class="w-2/12 bg-gray-200 md:h-10 flex items-center rounded-sm mx-0 md:mx-2 my-1 md:my-0">
+                                            <label className="flex-1 text-center">アイテム名</label>
+                                        </div>
+                                        <input
+                                            type="text"
+                                            className="w-full md:w-10/12 self-center"
+                                            onChange={(e) =>
+                                                setData("name", e.target.value)
+                                            }
+                                        />
+                                    </div>
+                                    <span className="text-red-600">
+                                        {errors.name}
+                                    </span>
+                                </div>
+                                
+                                <div className="flex-col py-4">
+                                    <div className="md:flex">
+                                        <div class="w-2/12 bg-gray-200 md:h-10 flex items-center rounded-sm mx-0 md:mx-2 my-1 md:my-0">
+                                            <label className="flex-1 text-center">数量</label>
+                                        </div>
+                                        <input
+                                            type="number"
+                                            className="w-full md:w-10/12 self-center"
+                                            min="1"
+                                            onChange={(e) =>
+                                                setData("number", e.target.value)
+                                            }
+                                        />
+                                    </div>
+                                    <span className="text-red-600">
+                                        {errors.number}
+                                    </span>
+                                </div>
+                                
+                                <div className="flex-col py-4">
+                                    <div className="md:flex">
+                                        <div class="w-2/12 bg-gray-200 md:h-10 flex items-center rounded-sm mx-0 md:mx-2 my-1 md:my-0">
+                                            <label className="flex-1 text-center">アイテム内容</label>
+                                        </div>
+                                        <textarea
+                                            rows="5"
+                                            className="w-full md:w-10/12 self-center"
+                                            onChange={(e) =>
+                                                setData("content", e.target.value)
+                                            }
+                                        />
+                                    </div>
+                                    <span className="text-red-600">
+                                        {errors.content}
+                                    </span>
+                                </div>
+                                
+                                <div className="flex-col py-4">
+                                    <div className="md:flex">
+                                        <div class="w-2/12 bg-gray-200 md:h-10 flex items-center rounded-sm mx-0 md:mx-2 my-1 md:my-0">
+                                            <label className="flex-1 text-center">販売日時</label>
+                                        </div>
+                                        <input
+                                            type="date"
+                                            className="w-full md:w-10/12 self-center"
+                                            min="1"
+                                            onChange={(e) =>
+                                                setData("publicated_at", e.target.value)
+                                            }
+                                        />
+                                    </div>
+                                    <span className="text-red-600">
+                                        {errors.publicated_at}
+                                    </span>
+                                </div>
                             
-                            <div className="mb-4">
-                                <label className="">アイテムの内容</label>
-                                <textarea
-                                    className="w-full px-4 py-2"
-                                    onChange={(e) =>
-                                        setData("content", e.target.value)
-                                    }
-                                />
-                                <span className="text-red-600">
-                                    {errors.content}
-                                </span>
-                            </div>
-                            
-                            <div className="mb-4">
-                                <label className="">販売日時</label>
-                                <input
-                                    type="date"
-                                    className="w-full px-4 py-2"
-                                    onChange={(e) =>
-                                        setData("publicated_at", e.target.value)
-                                    }
-                                />
-                                <span className="text-red-600">
-                                    {errors.publicated_at}
-                                </span>
-                            </div>
-                            
-                            <div className="mb-4">
-                                <label className="">販売元</label>
-                                <input
-                                    type="text"
-                                    className="w-full px-4 py-2"
-                                    onChange={(e) =>
-                                        setData("manufacture", e.target.value)
-                                    }
-                                />
-                                <span className="text-red-600">
-                                    {errors.manufacture}
-                                </span>
-                            </div>
-                            
-                            <div className="mb-4">
-                                <label className="">カテゴリー</label>
-                                <select 
-                                className="w-full px-4 py-2"
-                                onChange={(e) => setData('category_id',e.target.value)}
+                                <div className="flex-col py-4">
+                                    <div className="md:flex">
+                                        <div class="w-2/12 bg-gray-200 md:h-10 flex items-center rounded-sm mx-0 md:mx-2 my-1 md:my-0">
+                                            <label className="flex-1 text-center">出版社・ブランド名</label>
+                                        </div>
+                                        <input
+                                            type="text"
+                                            className="w-full md:w-10/12 self-center"
+                                            onChange={(e) =>
+                                                setData("manufacture", e.target.value)
+                                            }
+                                        />
+                                    </div>
+                                    <span className="text-red-600">
+                                        {errors.manufacture}
+                                    </span>
+                                </div>
+
+                                <div className="flex-col py-4">
+                                    <div className="md:flex">
+                                        <div class="w-2/12 bg-gray-200 md:h-10 flex items-center rounded-sm mx-0 md:mx-2 my-1 md:my-0">
+                                            <label className="flex-1 text-center">カテゴリー</label>
+                                        </div>
+                                        <select 
+                                        className="w-full md:w-10/12 self-center"
+                                        onChange={(e) => setData('category_id',e.target.value)}
+                                        >
+                                        {categories.map((category) => (
+                                            <option key={category.id} value={category.id}>{category.name}</option>
+                                        ))}
+                                        </select>
+                                        
+                                    </div>
+                                    <span className="text-red-600">
+                                        {errors.category_id}
+                                    </span>
+                                </div>
+                                
+                                <div className="flex-col py-4">
+                                    <div className="md:flex">
+                                        <div class="w-2/12 bg-gray-200 md:h-10 flex items-center rounded-sm mx-0 md:mx-2 my-1 md:my-0">
+                                            <label className="flex-1 text-center">写真追加</label>
+                                        </div>
+                                        <input
+                                            type="file"
+                                            className="w-full md:w-10/12 self-center"
+                                            onChange={(e) =>
+                                                setData("images", e.target.files)
+                                            }
+                                        />
+                                    </div>
+                                    <span className="text-red-600">
+                                        {errors.images}
+                                    </span>
+                                </div>
+                              
+                            <div className="mt-4 self-center">
+                                <button
+                                    type="submit"
+                                    className=
+                                        "w-32
+                                        h-12
+                                        bg-yellow-200
+                                        text-xl
+                                        text-gray-600 
+                                        hover:text-black
+                                        hover:bg-blue-1000 
+                                        hover:text-2xl
+                                        hover:shadow-2xl 
+                                        hover:scale-105 
+                                        active:ring
+                                        active:ring-gray-400 
+                                        rounded 
+                                        duration-200"
                                 >
-                                {categories.map((category) => (
-                                    <option key={category.id} value={category.id}>{category.name}</option>
-                                ))}
-                                </select>
-                                <span className="text-red-600">
-                                    {errors.category_id}
-                                </span>
-                            </div>
-                            
-                            <div className="mb-4">
-                                <label className="">写真追加</label>
-                                <input
-                                    type="file"
-                                    multiple
-                                    className="w-full px-4 py-2"
-                                    onChange={(e) =>
-                                        setData("images", e.target.files)
-                                    }
-                                />
-                                <span className="text-red-600">
-                                    {errors.images}
-                                </span>
-                            </div>
-                            
-                            
-                        </div>
-                        <div className="mt-4">
-                            <button
-                                type="submit"
-                                className="px-6 py-2 font-bold text-white bg-green-500 rounded"
-                            >
-                                Save
-                            </button>
+                                    作成
+                                </button>
+                                </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+        
         </Authenticated>
     );
 };

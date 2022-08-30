@@ -25,7 +25,6 @@ class ItemRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'number' => 'integer|min:1',
             'content' => 'required',
             'publicated_at' => 'date',
             'manufacture' => 'required',

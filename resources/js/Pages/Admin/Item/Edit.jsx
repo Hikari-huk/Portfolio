@@ -11,7 +11,6 @@ const Edit = (props) => {
     //inertia.jsではファイルの処理においてputが使えないため,postで送信する
     const { data, setData, post, errors } = useForm({
         name: item.name || "",
-        number: item.number || "",
         content: item.content || "",
         publicated_at: item.publicated_at || "",
         manufacture: item.manufacture || "",
