@@ -31,10 +31,10 @@ const Show = (props) => {
                             </div>
                         }
                         <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
-                            {item.images ? 
+                            {item.images[0] ? 
                             <div>
                                 <div class="h-64 md:h-full bg-gray-100 overflow-hidden rounded-lg shadow-lg">
-                                    <img src={item.images[1].image_path} loading="lazy" alt="画像無し" class="w-full h-full object-contain object-center" />
+                                    <img src={item.images[0].image_path} loading="lazy" alt="画像無し" class="w-full h-full object-contain object-center" />
                                 </div>
                             </div>
                             :
