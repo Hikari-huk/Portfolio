@@ -15,7 +15,9 @@ class ItemController extends Controller
     //
     public function index()
     {
-       $items = Item::with('category','images')->groupBy('name')->get();
+        $items = Item::with('category','images')->get();
+       //$items = Item::with('category','images')->groupBy("name")->get();
+        
         return Inertia::render("Admin/Item/Index",['items' => $items]);
     }
     

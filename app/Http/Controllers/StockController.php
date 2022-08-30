@@ -14,7 +14,9 @@ class StockController extends Controller
 {
     
     public function index(){
-        $items = Item::with('category')->groupby('name')->get();
+        // $items = Item::with('category')->groupby('name')->get();
+        $items = Item::with('category','images')->get();
+
         return Inertia::render('User/Stock/Index',['items' => $items]);
     }
     
