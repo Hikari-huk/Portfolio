@@ -19,6 +19,7 @@ return new class extends Migration
             $table->primary(['item_id','user_id']);
             $table->date("borrowed_at");
             $table->date("returned_at");
+            $table->unsignedBigInteger("number");
             $table->timestamps();
         });
     }

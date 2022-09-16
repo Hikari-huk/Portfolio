@@ -23,7 +23,7 @@ class Item extends Model
     
     public function users()
     {
-        return $this->belongsToMany(User::class)->withPivot('returned_at');
+        return $this->belongsToMany(User::class)->withPivot('returned_at','number');
     }
     
     protected $fillable = [

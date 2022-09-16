@@ -5,8 +5,7 @@ import Authenticated from '@/Layouts/AdminAuthenticated';
 import { Head, Link } from '@inertiajs/inertia-react';
 
 const Index = (props) => {
-    const { items , items_num_array} = props;
-    console.log(items_num_array);
+    const { items } = props;
 
     return (
         <Authenticated
@@ -46,7 +45,7 @@ const Index = (props) => {
                                     </td>
                                     <td className="border-t">
                                         <p className="flex items-center px-2 py-4 focus:text-indigo-700 focus:outline-none">
-                                            {items_num_array[item.id]}
+                                            {item.number}
                                         </p>
                                     </td>
                                     <td className="border-t">

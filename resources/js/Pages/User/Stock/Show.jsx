@@ -28,13 +28,13 @@ const Show = (props) => {
             <div className="flex justify-center px-12 py-12 md:px-24 lg:px-40 xl:px-56 showdow">
                 <div class="bg-white py-10 sm:py-10 lg:py-12 rounded-md">
                     <div class="max-w-screen-x1 px-4 md:px-8 mx-auto">
-                        {item.users[0] && item.users[0].id === props.auth.user.id ? 
+                        {item.users[0] && item.users[0].id === props.auth.user.id && item.number === 0? 
                             <div class="relative">
                                 <p class="absolute bottom-2 right-0">{ item.users[0].pivot.returned_at }までに返却</p>
                             </div>
                         :
                             <div class="relative">
-                                <p class="absolute bottom-2 right-0">数量：空き</p>
+                                <p class="absolute bottom-2 right-0">数量：{item.number}</p>
                             </div>
                         }
                         <div class="grid md:grid-cols-2 gap-8 lg:gap-12">

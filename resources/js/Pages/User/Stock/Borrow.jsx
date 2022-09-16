@@ -10,7 +10,8 @@ const Borrow = (props) => {
    const { data, setData, errors, post} = useForm({
        item_id: item.id,
        user_id: props.auth.user.id,
-       returned_at: ""
+       returned_at: "",
+       number: item.number
    });
    
    function handleSubmit(e) {
@@ -50,12 +51,27 @@ const Borrow = (props) => {
                                 </div>
                                 
                                 <form name="createForm" onSubmit={handleSubmit}>
+                                    <div class="flex-col items-center pb-4" name="item_name">
+                                        <p class="text-base mb-2">借りる数</p>
+                                        <input
+                                            type="number"
+                                            className="w-full px-4 mb-2 "
+                                            min="1"
+                                            max={item.number}
+                                            onChange={(e) =>
+                                                setData("number", e.target.value)
+                                            }
+                                        />
+                                        <span className="text-red-600">
+                                            {errors.number}
+                                        </span>
+                                        <hr/>
+                                    </div>
                                      <div class="flex-col items-center pb-4" name="item_name">
                                         <p class="text-base mb-2">返却日</p>
                                         <input
                                             type="date"
                                             className="w-full px-4 mb-2 "
-                                            value={data.returned_at}
                                             onChange={(e) =>
                                                 setData("returned_at", e.target.value)
                                             }

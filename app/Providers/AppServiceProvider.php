@@ -27,8 +27,8 @@ class AppServiceProvider extends ServiceProvider
             \URL::forceScheme('https');   
         }
         //githubにアップロードする際に消す
-        // else{
-        //     \URL::forceScheme('https'); 
-        // }
+        else{
+            \URL::forceScheme('https'); 
+        }
     }
 }

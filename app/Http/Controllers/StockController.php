@@ -14,7 +14,7 @@ class StockController extends Controller
 {
     
     public function index(){
-        $items = Item::with('category','images')->groupby('name')->get();
+        $items = Item::with('category','images')->get();
         return Inertia::render('User/Stock/Index',['items' => $items]);
     }
     
@@ -37,10 +37,14 @@ class StockController extends Controller
     
     //借用の処理
     public function store(StockRequest $request){
-        // dd($request->returned_at);
+        
         $user = Auth::user();
+        $item = Item::find($request->item_id);
+        $item->number = $item->number - $request->number;
+        $item->update();
         $user->items()->attach($request->item_id, [
             'returned_at' => $request->returned_at,
+            'number' => $request->number,
             'borrowed_at' => date('Y-m-d')
         ]);
         
@@ -49,14 +53,14 @@ class StockController extends Controller
         
     }
     
-    //返却画面の表示
+    //延長画面の表示
     public function edit(Item $item){
         
         $user = Auth::user();
-        $day = $user->items()->where('item_id',$item->id)->first()->pivot->returned_at;
+        $item_user = $user->items()->where('item_id',$item->id)->first()->pivot;
         return Inertia::render('User/Stock/Extention',[
             'item' => $item->with('category','images')->find($item->id),
-            'returned_at' => $day
+            'item_user' => $item_user
         ]);
     }
     
@@ -72,8 +76,11 @@ class StockController extends Controller
     
     //返却の処理
     public function delete(Item $item){
-        $user_id = Auth::user();
-        $item->users()->detach($user_id);
+        $user = Auth::user();
+        $return_num = $user->items()->where('item_id',$item->id)->first()->pivot->number;
+        $item->number = $item->number + $return_num;
+        $item->update();
+        $item->users()->detach($user);
         
         return redirect("/stock/".$item->id);
     }
