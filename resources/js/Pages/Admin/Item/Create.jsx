@@ -7,7 +7,7 @@ import { Head } from '@inertiajs/inertia-react';
 
 const Create = (props) => {
     const { categories } = props;
-    console.log(categories);
+    
     const { data, setData, errors, post } = useForm({
         name: "",
         number: "",
@@ -159,6 +159,7 @@ const Create = (props) => {
                                         <input
                                             type="file"
                                             className="w-full md:w-10/12 self-center"
+                                            multiple
                                             onChange={(e) =>
                                                 setData("images", e.target.files)
                                             }
@@ -175,11 +176,11 @@ const Create = (props) => {
                                     className=
                                         "w-32
                                         h-12
-                                        bg-yellow-200
+                                        bg-gray-200
                                         text-xl
                                         text-gray-600 
                                         hover:text-black
-                                        hover:bg-blue-1000 
+                                        hover:bg-gray-1000 
                                         hover:text-2xl
                                         hover:shadow-2xl 
                                         hover:scale-105 
@@ -190,7 +191,7 @@ const Create = (props) => {
                                 >
                                     作成
                                 </button>
-                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>

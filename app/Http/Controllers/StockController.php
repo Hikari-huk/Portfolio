@@ -8,20 +8,19 @@ use App\Models\Item;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Storage;
-
+use App\Http\Requests\StockRequest;
 
 class StockController extends Controller
 {
     
     public function index(){
-        // $items = Item::with('category')->groupby('name')->get();
-        $items = Item::with('category','images')->get();
-
+        $items = Item::with('category','images')->groupby('name')->get();
         return Inertia::render('User/Stock/Index',['items' => $items]);
     }
     
     public function show(Item $item){
         $item = Item::with('category','images','users')->find($item->id);
+        // dd($item);
         return Inertia::render("User/Stock/Show",[
             'item' => $item
             ]);
@@ -37,7 +36,7 @@ class StockController extends Controller
     }
     
     //借用の処理
-    public function store(Request $request){
+    public function store(StockRequest $request){
         // dd($request->returned_at);
         $user = Auth::user();
         $user->items()->attach($request->item_id, [
@@ -55,14 +54,14 @@ class StockController extends Controller
         
         $user = Auth::user();
         $day = $user->items()->where('item_id',$item->id)->first()->pivot->returned_at;
-        return Inertia::render('User/Stock/Return',[
+        return Inertia::render('User/Stock/Extention',[
             'item' => $item->with('category','images')->find($item->id),
             'returned_at' => $day
         ]);
     }
     
     //延長の処理
-    public function update(Request $request,Item $item){
+    public function update(StockRequest $request,Item $item){
         $input = $request->all();
         $user = Auth::user();
         $user->items()->sync([

@@ -1,7 +1,7 @@
 import React from "react";
 import { Inertia } from "@inertiajs/inertia";
 import { Link, useForm, usePage } from "@inertiajs/inertia-react";
-import Authenticated from '@/Layouts/AdminAuthenticated';
+import Authenticated from '@/Layouts/Authenticated';
 import { Head } from '@inertiajs/inertia-react';
 
 
@@ -21,7 +21,6 @@ const Create = (props) => {
 
         post("/orders");
     }
-    console.log(data);
 
     return (
         <Authenticated
@@ -30,88 +29,106 @@ const Create = (props) => {
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">注文作成</h2>}
         >
         <Head title="注文作成" />
-        
-        <div className="mt-20">
-            <div className="container flex flex-col justify-center mx-auto">
-                <div>
-                    <h1 className="mb-8 text-3xl font-bold">
-                        <Link
-                            href="/orders"
-                            className="text-indigo-600 hover:text-indigo-700"
-                        >
-                            注文リスト
-                        </Link>
-                        <span className="font-medium text-indigo-600"> / </span>
-                        注文作成
-                    </h1>
-                </div>
-                <div className="max-w-6xl p-8 bg-white rounded shadow">
-                    <form name="createForm" onSubmit={handleSubmit}>
-                        <div className="flex flex-col">
-                            <div className="mb-4">
-                                <label className="">注文商品</label>
-                                <input
-                                    type="text"
-                                    className="w-full px-4 py-2"
-                                    onChange={(e) =>
-                                        setData("name", e.target.value)
-                                    }
-                                />
-                                <span className="text-red-600">
-                                    {errors.name}
-                                </span>
-                            </div>
+        <div className="flex justify-center py-12 px-12 md:px-24 lg:px-40 xl:px-56 shodow">
+                <div class="w-full bg-white py-10 sm:py-10 lg:py-12 rounded-md">
+                    <div class="max-w-screen-xl px-4 md:px-8 mx-auto">
+                        <form name="createForm" onSubmit={handleSubmit}>
+                            <div className="flex flex-col w-full">
                             
-                            <div className="mb-4">
-                                <label className="">数量</label>
-                                <input
-                                    type="number"
-                                    className="w-full px-4 py-2"
-                                    min="1"
-                                    onChange={(e) =>
-                                        setData("number", e.target.value)
-                                    }
-                                />
-                                <span className="text-red-600">
-                                    {errors.number}
-                                </span>
-                            </div>
+                                <div className="flex-col py-4">
+                                    <div className="md:flex">
+                                        <div class="w-2/12 bg-gray-200 md:h-10 flex items-center rounded-sm mx-0 md:mx-2 my-1 md:my-0">
+                                            <label className="flex-1 text-center">注文商品</label>
+                                        </div>
+                                        <input
+                                            type="text"
+                                            className="w-full md:w-10/12 self-center"
+                                            onChange={(e) =>
+                                                setData("name", e.target.value)
+                                            }
+                                        />
+                                    </div>
+                                    <span className="text-red-600">
+                                        {errors.name}
+                                    </span>
+                                </div>
                             
-                            <div className="mb-4">
-                                <label className="">商品URL</label>
-                                <input
-                                    type="text"
-                                    className="w-full px-4 py-2"
-                                    onChange={(e) =>
-                                        setData("url", e.target.value)
-                                    }
-                                />
-                                <span className="text-red-600">
-                                    {errors.url}
-                                </span>
+                                <div className="flex-col py-4">
+                                    <div className="md:flex">
+                                        <div class="w-2/12 bg-gray-200 md:h-10 flex items-center rounded-sm mx-0 md:mx-2 my-1 md:my-0">
+                                            <label className="flex-1 text-center">数量</label>
+                                        </div>
+                                        <input
+                                            type="number"
+                                            className="w-full md:w-10/12 self-center"
+                                            min="1"
+                                            onChange={(e) =>
+                                                setData("number", e.target.value)
+                                            }
+                                        />
+                                    </div>
+                                    <span className="text-red-600">
+                                        {errors.number}
+                                    </span>
+                                </div>
+                                
+                                <div className="flex-col py-4">
+                                    <div className="md:flex">
+                                        <div class="w-2/12 bg-gray-200 md:h-10 flex items-center rounded-sm mx-0 md:mx-2 my-1 md:my-0">
+                                            <label className="flex-1 text-center">商品URL</label>
+                                        </div>
+                                        <input
+                                            type="text"
+                                            className="w-full md:w-10/12 self-center"
+                                            onChange={(e) =>
+                                                setData("url", e.target.value)
+                                            }
+                                        />
+                                    </div>
+                                    <span className="text-red-600">
+                                        {errors.url}
+                                    </span>
+                                </div>
+                                
+                                <div className="flex-col py-4">
+                                    <div className="md:flex">
+                                        <div class="w-2/12 bg-gray-200 md:h-10 flex items-center rounded-sm mx-0 md:mx-2 my-1 md:my-0">
+                                            <label className="flex-1 text-center">理由</label>
+                                        </div>
+                                        <textarea
+                                            rows="5"
+                                            className="w-full md:w-10/12 self-center"
+                                            onChange={(e) =>
+                                                setData("reason", e.target.value)
+                                            }
+                                        />
+                                    </div>
+                                    <span className="text-red-600">
+                                        {errors.reason}
+                                    </span>
+                                </div>
+                                <div className="mt-4 self-center">
+                                    <button
+                                        type="submit"
+                                        className=
+                                        "w-32
+                                        h-12
+                                        bg-gray-200
+                                        text-xl
+                                        text-gray-600 
+                                        hover:text-black
+                                        hover:bg-gray-1000 
+                                        hover:text-2xl
+                                        hover:shadow-2xl 
+                                        hover:scale-105 
+                                        active:ring
+                                        active:ring-gray-400 
+                                        rounded 
+                                        duration-200"
+                                    >
+                                    注文
+                                </button>
                             </div>
-                            <div className="mb-4">
-                                <label className="">なぜ必要なのか</label>
-                                <textarea
-                                    type="text"
-                                    className="w-full h-32 rounded"
-                                    onChange={(e) =>
-                                        setData("reason", e.target.value)
-                                    }
-                                />
-                                <span className="text-red-600">
-                                    {errors.reason}
-                                </span>
-                            </div>
-                            
-                        </div>
-                        <div className="mt-4">
-                            <button
-                                type="submit"
-                                className="px-6 py-2 font-bold text-white bg-green-500 rounded"
-                            >
-                                注文
-                            </button>
                         </div>
                     </form>
                 </div>
