@@ -57,8 +57,25 @@ const Borrow = (props) => {
                                 </div>
                                 
                                 <form name="createForm" onSubmit={handleSubmit}>
+                                <div class="flex-col items-center pb-4" name="item_name">
+                                        <p class="text-base mb-2">合計で借用数を設定してください</p>
+                                        <input
+                                            type="number"
+                                            className="w-full px-4 mb-2 "
+                                            min="1"
+                                            max={item.number + item_user.number}
+                                            value={data.number}
+                                            onChange={(e) =>
+                                                setData("number", e.target.value)
+                                            }
+                                        />
+                                        <span className="text-red-600">
+                                            {errors.number}
+                                        </span>
+                                        <hr/>
+                                    </div>
                                      <div class="flex-col items-center pb-4" name="item_name">
-                                        <p class="text-base mb-2">返却日</p>
+                                        <p class="text-base mb-2">返却日を入力してください</p>
                                         <input
                                             type="date"
                                             className="w-full px-4 mb-2 "

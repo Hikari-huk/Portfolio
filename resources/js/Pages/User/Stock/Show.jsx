@@ -13,7 +13,7 @@ const Show = (props) => {
             onBefore: () => confirm("返却しますか?"),
         })
     }
-    
+    console.log(item);
     
     return (
         <Authenticated 
@@ -30,7 +30,7 @@ const Show = (props) => {
                     <div class="max-w-screen-x1 px-4 md:px-8 mx-auto">
                         {item.users[0] && item.users[0].id === props.auth.user.id && item.number === 0? 
                             <div class="relative">
-                                <p class="absolute bottom-2 right-0">{ item.users[0].pivot.returned_at }までに返却</p>
+                                <p class="absolute bottom-2 right-0">{ item.users[0].pivot.returned_at }までに返却({item.users[0].pivot.number}個借りています)</p>
                             </div>
                         :
                             <div class="relative">
@@ -131,12 +131,36 @@ const Show = (props) => {
                                                 >
                                                     返却
                                                 </button>
-                                                
                                             </div>
                                         :
                                             <div>
-                                                <h1>{item.users[0].name}さんが{item.users[0].pivot.returned_at}まで借りています。</h1>
-                                            </div>
+                                            {item.users.map((user) => (
+                                                <h1>{user.name}さんが{user.pivot.returned_at}まで借りています。</h1>
+                                            ))}
+                                                {item.number !== 0 ?
+                                                    <div class="flex justify-center my-4">
+                                                        <button
+                                                        className=
+                                                            "w-32
+                                                            h-12
+                                                            bg-gray-300
+                                                            text-xl
+                                                            text-black 
+                                                            hover:text-blue-800
+                                                            hover:bg-blue-1000 
+                                                            hover:shadow-2xl 
+                                                            hover:scale-105 
+                                                            active:ring 
+                                                            active:ring-gray-400 
+                                                            rounded 
+                                                            duration-200">
+                                                        <Link href={"/stock/"+item.id+"/borrow"}>借りる</Link>
+                                                        </button>
+                                                    </div>
+                                                    :
+                                                    <div></div>
+                                                }
+                                                </div>
                                         ):(
                                             <div>
                                                 <button
