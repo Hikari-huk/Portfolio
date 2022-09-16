@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->string("name");
+            $table->unsignedBigInteger("number");
             $table->string("content");
             $table->date("publicated_at");
             $table->string("manufacture");

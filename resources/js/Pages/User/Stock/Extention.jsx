@@ -6,16 +6,18 @@ import { Head } from '@inertiajs/inertia-react';
 
 
 const Borrow = (props) => {
-   const { item , returned_at} = props;
+   const { item , item_user} = props;
    
    
    
    const { data, setData, errors, put} = useForm({
        item_id: item.id,
        user_id: props.auth.user.id,
-       returned_at: returned_at
+       returned_at: item_user.returned_at,
+       number: item_user.number
+       
    });
-   
+   console.log(item_user);
    
    function handleSubmit(e) {
         e.preventDefault();

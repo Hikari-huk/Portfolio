@@ -24,7 +24,8 @@ class StockRequest extends FormRequest
     public function rules()
     {
         return [
-            'returned_at' => 'required|date|after:today'
+            'returned_at' => 'required|date|after:today',
+            'number' => 'required'
         ];
     }
     
@@ -33,7 +34,8 @@ class StockRequest extends FormRequest
         return [
             'returned_at.required' => '日付を入力してください',
             'returned_at.date' => '日付を入力してください',
-            'returned_at.after' => '明日以降の日付を入力してください'
+            'returned_at.after' => '明日以降の日付を入力してください',
+            'number.required' => '個数を入力してください'
         ];
     }
 }

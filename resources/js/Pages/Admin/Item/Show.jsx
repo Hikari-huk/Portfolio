@@ -5,7 +5,7 @@ import { Link, Head } from '@inertiajs/inertia-react'
 
 
 const Show = (props) => {
-    const { item, item_num } = props;
+    const { item } = props;
     
     const handleDeleteItem = (id) => {
         Inertia.delete(`/admin/items/${id}`, {
@@ -48,7 +48,7 @@ const Show = (props) => {
                                 </div>
                                 <div class="flex-col items-center pb-4" name="item_name">
                                     <p class="text-base opacity-50">数量</p>
-                                    <h2 class="text-gray-800 text-xl sm:text-2xl font-semibold text-center md:text-left mb-2">{item_num}</h2>
+                                    <h2 class="text-gray-800 text-xl sm:text-2xl font-semibold text-center md:text-left mb-2">{item.number}</h2>
                                     <hr/>
                                 </div>
                                 

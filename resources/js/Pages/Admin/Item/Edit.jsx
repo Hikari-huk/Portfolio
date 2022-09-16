@@ -5,13 +5,13 @@ import Authenticated from '@/Layouts/AdminAuthenticated';
 import { Head } from '@inertiajs/inertia-react';
 
 const Edit = (props) => {
-    const { item , categories, item_num} = props;
+    const { item , categories} = props;
     
     
     //inertia.jsではファイルの処理においてputが使えないため,postで送信する
     const { data, setData, post, errors } = useForm({
         name: item.name || "",
-        number: item_num || "",
+        number: item.number || "",
         content: item.content || "",
         publicated_at: item.publicated_at || "",
         manufacture: item.manufacture || "",
@@ -20,7 +20,6 @@ const Edit = (props) => {
         images: ""
     });
     
-    console.log(data);
     
     
     function handleSubmit(e) {
@@ -80,7 +79,7 @@ const Edit = (props) => {
                                             className="w-full md:w-10/12 self-center"
                                             value={data.number}
                                             min="1"
-                                            max={item_num}
+                                            max={item.number}
                                             onChange={(e) =>(
                                                 setData("number", e.target.value))
                                             }
