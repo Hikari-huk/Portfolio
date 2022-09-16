@@ -8,6 +8,13 @@ import Button from '@/Components/Button';
 const Show = (props) => {
     const { item } = props;
     
+    const handleReturnItem = (id) => {
+        Inertia.delete(`/stock/${id}`,{
+            onBefore: () => confirm("返却しますか?"),
+        })
+    }
+    
+    
     return (
         <Authenticated 
             auth={props.auth}
@@ -27,7 +34,7 @@ const Show = (props) => {
                             </div>
                         :
                             <div class="relative">
-                                <p class="absolute bottom-2 right-0">空き</p>
+                                <p class="absolute bottom-2 right-0">数量：空き</p>
                             </div>
                         }
                         <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
@@ -85,13 +92,14 @@ const Show = (props) => {
                                             (item.users[0].id === props.auth.user.id ? 
                                             <div>
                                                 <button
-                                                    className="w-32
+                                                    className="
+                                                    w-32
                                                     h-12
                                                     bg-gray-300
                                                     text-xl
-                                                    text-black 
+                                                    text-gray-600 
                                                     hover:text-blue-800
-                                                    hover:bg-blue-1000 
+                                                    hover:bg-gray-1000 
                                                     hover:shadow-2xl 
                                                     hover:scale-105 
                                                     active:ring 
@@ -99,8 +107,31 @@ const Show = (props) => {
                                                     rounded 
                                                     duration-200"
                                                 >
-                                                    <Link href={"/stock/"+item.id+"/return"}>返却</Link>
+                                                    <Link href={"/stock/"+item.id+"/return"}>延長</Link>
                                                 </button>
+                                                <button
+                                                    type="button"
+                                                    className=
+                                                    "w-32
+                                                    h-12
+                                                    mx-4
+                                                    bg-gray-300
+                                                    text-xl
+                                                    text-gray-600 
+                                                    hover:text-black
+                                                    hover:bg-gray-1000 
+                                                    hover:text-2xl
+                                                    hover:shadow-2xl 
+                                                    hover:scale-105 
+                                                    active:ring
+                                                    active:ring-gray-400 
+                                                    rounded 
+                                                    duration-200"
+                                                    onClick={() => handleReturnItem(item.id)}
+                                                >
+                                                    返却
+                                                </button>
+                                                
                                             </div>
                                         :
                                             <div>

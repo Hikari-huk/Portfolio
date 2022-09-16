@@ -14,21 +14,36 @@ const Index = (props) => {
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">注文リスト</h2>}
         >
         <Head title="注文リスト" />
-        <div>
+        <div className="py-24">
             <div className="container mx-auto">
-                <h1 className="mb-8 text-3xl font-bold text-center">注文リスト</h1>
-                <div className="flex items-center justify-between mb-6">
+            
+                <div className="flex mb-6">
                     <InertiaLink
-                        className="px-6 py-2 text-white bg-green-500 rounded-md focus:outline-none"
-                        href="/orders/create"
+                        className=
+                            "flex items-center
+                            w-auto
+                            h-12
+                            px-6
+                            bg-gray-300
+                            text-xl
+                            text-black 
+                            hover:text-blue-800
+                            hover:bg-blue-1000 
+                            hover:shadow-2xl 
+                            hover:scale-105 
+                            active:ring 
+                            active:ring-gray-400 
+                            rounded 
+                            duration-200"
+                            href="/orders/create"
                     >
                         新規注文
                     </InertiaLink>
                 </div>
-
-                <div className="overflow-x-auto bg-white rounded shadow">
-                    <table className="w-full whitespace-nowrap">
-                        <thead className="text-white bg-gray-600">
+                
+                <div className="overflow-x-auto bg-white rounded shadow border-solid border-4 border-gray-300">
+                    <table className="w-full whitespace-nowrap table-auto">
+                        <thead className="text-black bg-gray-100">
                             <tr className="font-bold text-left">
                                 <th className="px-6 pt-5 pb-4">欲しいアイテム</th>
                                 <th className="px-6 pt-5 pb-4">数</th>
@@ -61,13 +76,30 @@ const Index = (props) => {
                                         </h1>
                                     </td>
                                     <td className="border-t">
-                                        <InertiaLink
-                                            tabIndex="1"
-                                            className="px-4 py-2 text-sm text-white bg-blue-500 rounded"
-                                            href={"/orders/"+order.id}
+                                        <button
+                                            className=
+                                            "w-24
+                                            h-12
+                                            px-6
+                                            bg-gray-300
+                                            text-xl
+                                            text-black 
+                                            hover:text-blue-800
+                                            hover:bg-blue-1000 
+                                            hover:shadow-2xl 
+                                            hover:scale-105 
+                                            active:ring 
+                                            active:ring-gray-400 
+                                            rounded 
+                                            duration-200"
                                         >
+                                            <InertiaLink
+                                                tabIndex="1"
+                                                href={"/orders/"+order.id}
+                                            >
                                             詳細
-                                        </InertiaLink>
+                                            </InertiaLink>
+                                        </button>
                                     </td>
                                 </tr>
                             ))}

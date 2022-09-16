@@ -4,28 +4,33 @@ import { Link, useForm, usePage } from "@inertiajs/inertia-react";
 import Authenticated from '@/Layouts/Authenticated';
 import { Head } from '@inertiajs/inertia-react';
 
+
 const Borrow = (props) => {
-   const { item } = props;
+   const { item , returned_at} = props;
    
-   const { data, setData, errors, post} = useForm({
+   
+   
+   const { data, setData, errors, put} = useForm({
        item_id: item.id,
        user_id: props.auth.user.id,
-       returned_at: ""
+       returned_at: returned_at
    });
+   
    
    function handleSubmit(e) {
         e.preventDefault();
-        post("/stock");
+        put(`/stock/${item.id}`);
     }
+    
    
    return (
         <Authenticated
             auth={props.auth}
             errors={props.errors}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">借用</h2>}
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">返却</h2>}
         >
-        <Head title="Borrow" />
-        <div className="flex justify-center py-12 px-12 md:px-24 lg:px-40 xl:px-56 shodow">
+        <Head title="Extension" />
+         <div className="flex justify-center py-12 px-12 md:px-24 lg:px-40 xl:px-56 shodow">
                 <div class="w-full bg-white py-10 sm:py-10 lg:py-12 rounded-md shadow">
                     <div class="max-w-screen-xl px-4 md:px-8 mx-auto">
                         <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
@@ -84,7 +89,7 @@ const Borrow = (props) => {
                                                     rounded 
                                                     duration-200"
                                         >
-                                            借用
+                                            延長
                                         </button>
                                     </div>
                                 </form>

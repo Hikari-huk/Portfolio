@@ -10,7 +10,6 @@ class Item extends Model
 {
     use HasFactory;
     
-    use SoftDeletes;
     
     public function category()
     {
@@ -29,6 +28,7 @@ class Item extends Model
     
     protected $fillable = [
         'name',
+        'number',
         'content',
         'date',
         'publicated_at',

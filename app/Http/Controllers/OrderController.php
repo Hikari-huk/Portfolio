@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
+use App\Http\Requests\OrderRequest;
 
 
 class OrderController extends Controller
@@ -30,7 +31,7 @@ class OrderController extends Controller
     }
     
     //Order作成
-    public function store(Request $request, Order $order){
+    public function store(OrderRequest $request, Order $order){
         $input = $request->all();
         $order->fill($input)->save();
         return redirect('/orders');
@@ -39,12 +40,17 @@ class OrderController extends Controller
     
     //Orderの編集画面の表示
     public function edit(Order $order){
+        $user = auth()->user();
         $order = Order::with('user')->find($order->id);
-        return Inertia::render('User/Order/EditOrder',['order' => $order]);
+        if($user->can('update',$order)){
+            return Inertia::render('User/Order/EditOrder',['order' => $order]);
+        }else{
+            return redirect('/orders/'.$order->id);
+        }
     }
     
     //Orderの更新
-    public function update(Request $request, Order $order){
+    public function update(OrderRequest $request, Order $order){
         $input =$request->all();
         
         $order->fill($input)->save();
@@ -54,6 +60,8 @@ class OrderController extends Controller
     
     //Order削除
     public function delete(Order $order){
+        $this->authorize('delete',$order);
+        
         $order->delete();
         
         return redirect('/orders');

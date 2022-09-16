@@ -5,8 +5,8 @@ import Authenticated from '@/Layouts/AdminAuthenticated';
 import { Head, Link } from '@inertiajs/inertia-react';
 
 const Index = (props) => {
-    const { items } = props;
-    console.log(items);
+    const { items , items_num_array} = props;
+    console.log(items_num_array);
 
     return (
         <Authenticated
@@ -22,6 +22,7 @@ const Index = (props) => {
                         <thead className="text-black bg-gray-100">
                             <tr className="font-bold text-left">
                                 <th className="px-32 pt-5 pb-4">名前</th>
+                                <th className="px-2 pt-5 pb-4">数量</th>
                                 <th className="px-2 pt-5 pb-4">カテゴリー</th>
                                 <th className="px-2 pt-5 pb-4">詳細</th>
                             </tr>
@@ -38,9 +39,14 @@ const Index = (props) => {
                                             <div className="pl-6 py-4">
                                                 <img src="/images/no_image.jpg" loading="lazy" alt="画像無し" class="w-16 h-16 object-contain object-cover object-center" />
                                             </div>
-                                        }
+                                    }
                                         <p className="flex items-center px-10 py-4 focus:text-indigo-700 focus:outline-none">
                                             {item.name}
+                                        </p>
+                                    </td>
+                                    <td className="border-t">
+                                        <p className="flex items-center px-2 py-4 focus:text-indigo-700 focus:outline-none">
+                                            {items_num_array[item.id]}
                                         </p>
                                     </td>
                                     <td className="border-t">
