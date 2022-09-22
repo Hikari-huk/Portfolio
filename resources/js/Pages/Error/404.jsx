@@ -13,7 +13,7 @@ export default function Welcome(props) {
       
         
         <div class="max-w-screen-2xl mx-auto bg-white">
-        <Head title="Welcome" />
+        <Head title="404 Not Found" />
           <div class="flex justify-between items-center border-b py-4 lg:py-8 bg-white">
             <Link href="/" class="mx-6 inline-flex items-center text-black-800 text-xl lg:text-2xl font-bold gap-2.5" aria-label="logo">
               <AppPortfolioLogo className="block h-8 w-auto text-gray-500" />
@@ -149,27 +149,18 @@ export default function Welcome(props) {
             </div>
 
     <section class="flex flex-col items-center">
-      <div class="max-w-xl flex flex-col items-center text-center pt-16 lg:pt-48">
+      <div class="max-w-xl flex flex-col items-center text-center pt-20 lg:pt-48">
 
-        <h1 class="text-black-800 text-4xl sm:text-5xl md:text-6xl font-bold mb-8 md:mb-12">Lab Manager</h1>
-        <h2 class="text-black-200 text-2xl sm:text-3xl md:text-4xl font-bold mb-8 md:mb-12">~研究室在庫管理システム~</h2>
+        <h1 class="text-black-800 text-4xl sm:text-5xl md:text-6xl font-bold mb-8 md:mb-12">404 Not Found</h1>
+        <h2 class="text-black-200 text-2xl sm:text-3xl md:text-4xl font-bold mb-8 md:mb-12">ページが見つかりませんでした。</h2>
         
         <p class="text-gray-500 xl:text-lg leading-relaxed mb-8 md:mb-12">
-          データ上で実験器具を管理するために<br/>管理者と学生ユーザで機能を割り振りしている<br/>
+          あなたがアクセスしたページは削除されたかURLが変更されているため、<br/>見つけることができません。<br/>
         </p>
         
-        {props.auth.user ? (
-          <div>
-            <a href={route('logout')} class="inline-block bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">Log out</a>
-          </div>
-        ):(
         <div class="flex justify-center">
-          <div class="w-full flex flex-col sm:flex-row sm:justify-center gap-2.5">
-              <Link href={route('register')} class="inline-block bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">学生の新規登録</Link>
-              <Link href={route('admin.register')} class="inline-block bg-gray-200 hover:bg-gray-300 focus-visible:ring ring-indigo-300 text-gray-500 active:text-gray-700 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">管理者の新規登録</Link>
-          </div>
-          </div>
-        )}
+              <Link href={route('welcome')} class="text-blue-700 text-lg hover:text-sky-500 rounded-md mg-4">&gt;&gt;ホームに戻る</Link>
+        </div>
       </div>
     </section>
   </div>

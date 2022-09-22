@@ -69,3 +69,7 @@ Route::group(['middleware' => ['auth:admin']], function(){
 require __DIR__.'/auth.php';
 
 require __DIR__.'/admin.php';
+
+Route::get("/{any}",function(){
+    return Inertia::render("Error/404");
+});
