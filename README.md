@@ -11,11 +11,11 @@
 - ログイン機能
 - マルチ認証機能
 - 管理者用の機能
- - 実験器具のCRUD(Create,Read,Update,Delete)  
+  - 実験器具のCRUD(Create,Read,Update,Delete)  
 - 一般ユーザ
- - 在庫の一覧表示
- - 在庫の貸借機能
- - 欲しい器具の注文CRUD
+  - 在庫の一覧表示
+  - 在庫の貸借機能
+  - 欲しい器具の注文CRUD
 
 ## 注力した機能や工夫した点
 注力した機能は実験器具の画像のCRUDと貸借機能です。
@@ -24,7 +24,7 @@
 
 ## [URL](http://hikari-labmanager.com/)とテストアカウント
 URL: [Lab Manager](http://hikari-labmanager.com/)  
-Email：test@outlook.jp  
+Email: test@outlook.jp  
 pass: test1234
 
 ## デモ画面
