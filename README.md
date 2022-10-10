@@ -1,64 +1,40 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Lab Manager ~研究室在庫管理システム~
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## アプリの概要
+研究室の在庫を管理するために、中間テーブルを用いた貸し借り機能を実装した。
 
-## About Laravel
+## 開発環境
+［言語］PHP(Laravel 9)、JavaScript(Inertia.js)
+［その他］AWS(Cluod9、EC2、S3)、MYSQL
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 機能
+- ログイン機能
+- マルチ認証機能
+管理者用の機能
+- 実験器具のCRUD(Create,Read,Update,Delete)
+一般ユーザ
+- 在庫の一覧表示
+- 在庫の貸借機能
+- 欲しい器具の注文CRUD
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 注力した機能や工夫した点
+注力した機能は実験器具の画像のCRUDと貸借機能です。
+実験器具の画像のCRUD
+- 実験器具の画像はAWSのS3を使用して、追加と削除ができるようにしました。特に画像の編集をする際に、新たに画像を追加することや、元々ある画像を削除できるような処理を実装しました。
+貸借機能
+- 多対多の中間テーブルを作成して誰が何を借りたのか、また何日までに返すのかを記録できるようにしました。
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## [URL](http://hikari-labmanager.com/)とテストアカウント
+[Lab Manager](http://hikari-labmanager.com/)
+Email：test@outlook.jp
+pass: test1234
 
-## Learning Laravel
+## デモ画面
+実験器具の編集画面（管理者用）
+![Readme3](https://user-images.githubusercontent.com/82071436/194884122-59f90049-ab54-48fe-b56e-01e6e80c78ac.png)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+実験器具の詳細画面（一般ユーザ）
+![Readme1](https://user-images.githubusercontent.com/82071436/194884533-0a3b0aae-8f43-4897-a387-a1e0227a6ab8.png)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+実験器具を借りる際の画面（一般ユーザ）
+![Readme2](https://user-images.githubusercontent.com/82071436/194884615-0ff76078-bebc-486d-8686-050f67888b62.png)
