@@ -10,7 +10,7 @@ export default function Authenticated({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     return (
-        <div class="max-w-screen-2xl mx-auto bg-gray-100">
+        <div class="max-w-screen-2xl mx-auto bg-white">
             <div class="flex justify-between items-center border-b py-4 lg:py-8 bg-white">
                 <Link href="/" class="mx-6 inline-flex items-center text-black-800 text-xl lg:text-2xl font-bold gap-2.5" aria-label="logo">
                     <AppPortfolioLogo className="block h-8 w-auto text-gray-500" />
@@ -22,9 +22,6 @@ export default function Authenticated({ auth, header, children }) {
                     </NavLink>
                    <NavLink href={route('admin.item.index')} active={route().current('admin.item.index')}>
                         在庫一覧
-                    </NavLink>
-                   <NavLink href={route('admin.item.create')} active={route().current('admin.item.create')}>
-                        在庫作成
                     </NavLink>
                 </nav>
                 <div  class="mx-6 hidden lg:flex ">
@@ -95,11 +92,6 @@ export default function Authenticated({ auth, header, children }) {
                 <div className="bg-white pt-2 pb-3 space-y-1">
                     <ResponsiveNavLink href={route('admin.item.index')} active={route().current('admin.item.index')}>
                         在庫一覧
-                    </ResponsiveNavLink>
-                </div>
-                <div className="bg-white pt-2 pb-3 space-y-1">
-                    <ResponsiveNavLink href={route('admin.item.create')} active={route().current('admin.item.create')}>
-                        在庫作成
                     </ResponsiveNavLink>
                 </div>
 

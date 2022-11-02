@@ -8,10 +8,7 @@ import { Link,Head } from '@inertiajs/inertia-react';
 
 export default function Welcome(props) {
   const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
-    console.log(props);
     return (
-      
-        
         <div class="max-w-screen-2xl mx-auto bg-white">
         <Head title="404 Not Found" />
           <div class="flex justify-between items-center border-b py-4 lg:py-8 bg-white">

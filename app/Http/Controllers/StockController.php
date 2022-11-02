@@ -12,7 +12,6 @@ use App\Http\Requests\StockRequest;
 
 class StockController extends Controller
 {
-    
     public function index(){
         $items = Item::with('category','images')->get();
         return Inertia::render('User/Stock/Index',['items' => $items]);
@@ -20,7 +19,6 @@ class StockController extends Controller
     
     public function show(Item $item){
         $item = Item::with('category','images','users')->find($item->id);
-        // dd($item);
         return Inertia::render("User/Stock/Show",[
             'item' => $item
             ]);
@@ -55,7 +53,6 @@ class StockController extends Controller
     
     //延長画面の表示
     public function edit(Item $item){
-        
         $user = Auth::user();
         $item_user = $user->items()->where('item_id',$item->id)->first()->pivot;
         return Inertia::render('User/Stock/Extention',[
