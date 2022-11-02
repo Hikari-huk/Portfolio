@@ -24,7 +24,7 @@ const Show = (props) => {
             }>
             <Head title="注文詳細"/>
             <div className="flex justify-center py-12 px-24 md:px-32 lg:px-56 xl:px-64 shodow">
-                <div class="w-full bg-white py-10 sm:py-10 lg:py-12 rounded-md">
+                <div class="w-full bg-white py-10 sm:py-10 lg:py-12 rounded-md border-4 border-gray-200">
                     <div class="max-w-screen-xl px-4 md:px-8 mx-auto">
                         <div className="flex flex-col w-full">
                             <div className="flex-col py-4">
@@ -32,7 +32,7 @@ const Show = (props) => {
                                     <div class="w-2/12 bg-gray-200 md:h-10 flex items-center rounded-sm mx-0 md:mx-2 my-1 md:my-0">
                                         <label className="flex-1 text-center">注文商品</label>
                                     </div>
-                                    <div class="w-full md:w-10/12 flex justify-center bg-blue-200 bg-opacity-25 shadow rounded-sm">
+                                    <div class="w-full md:w-10/12 flex justify-center rounded-sm border-2 border-gray-200">
                                         <h2 className="text-center">{order.name}</h2>
                                     </div>
                                 </div>
@@ -43,7 +43,7 @@ const Show = (props) => {
                                     <div class="w-2/12 bg-gray-200 md:h-10 flex items-center rounded-sm mx-0 md:mx-2 my-1 md:my-0">
                                         <label className="flex-1 text-center">数量</label>
                                     </div>
-                                    <div class="w-full md:w-10/12 flex justify-center bg-blue-200 bg-opacity-25 shadow rounded-sm">
+                                    <div class="w-full md:w-10/12 flex justify-center rounded-sm border-2 border-gray-200">
                                         <h3 className="text-center">{order.number}</h3>
                                     </div>
                                 </div>
@@ -54,7 +54,7 @@ const Show = (props) => {
                                     <div class="w-2/12 bg-gray-200 md:h-10 flex items-center rounded-sm mx-0 md:mx-2 my-1 md:my-0">
                                         <label className="flex-1 text-center">欲しい商品のURL</label>
                                     </div>
-                                    <div class="w-full md:w-10/12 flex justify-center bg-blue-200 bg-opacity-25 shadow rounded-sm">
+                                    <div class="w-full md:w-10/12 flex justify-center rounded-sm border-2 border-gray-200">
                                         <h3 className="text-center">{order.url}</h3>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@ const Show = (props) => {
                                     <div class="w-2/12 bg-gray-200 md:h-10 flex items-center rounded-sm mx-0 md:mx-2 my-1 md:my-0">
                                         <label className="flex-1 text-center">理由</label>
                                     </div>
-                                    <div class="w-full md:w-10/12 bg-blue-200 bg-opacity-25 shadow rounded-sm">
+                                    <div class="w-full md:w-10/12 rounded-sm border-2 border-gray-200">
                                         <h3 className="text-center">{order.reason}</h3>
                                     </div>
                                 </div>
@@ -76,7 +76,7 @@ const Show = (props) => {
                                     <div class="w-2/12 bg-gray-200 md:h-10 flex items-center rounded-sm mx-0 md:mx-2 my-1 md:my-0">
                                         <label className="flex-1 text-center">注文者</label>
                                     </div>
-                                    <div class="w-auto md:w-10/12 flex justify-center bg-blue-100 bg-opacity-25 shadow rounded-sm">
+                                    <div class="w-auto md:w-10/12 flex justify-center rounded-sm border-2 border-gray-200">
                                         <h3 className="text-center">{order.user.name}</h3>
                                     </div>
                                 </div>

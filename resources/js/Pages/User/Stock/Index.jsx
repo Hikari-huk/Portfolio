@@ -15,7 +15,7 @@ const Index = (props) => {
         <Head title="Index" />
         <div className="py-24">
             <div className="container mx-auto">
-                <div className="overflow-x-auto bg-white rounded shadow border-solid border-4 border-gray-300">
+                <div className="overflow-x-auto bg-white rounded shadow border-solid border-4 border-gray-200">
                     <table className="w-full whitespace-nowrap table-auto">
                         <thead className="text-black bg-gray-100">
                             <tr className="font-bold text-left">

@@ -16,7 +16,33 @@ const Index = (props) => {
         <Head title="Index" />
         <div className="py-24">
             <div className="container mx-auto">
-                <div className="overflow-x-auto bg-white rounded shadow border-solid border-4 border-gray-300">
+            <div className="flex mb-6">
+                    <InertiaLink
+                        className=
+                            "flex items-center
+                            w-auto
+                            h-12
+                            px-6
+                            bg-white
+                            text-xl
+                            text-black 
+                            hover:text-blue-800
+                            hover:bg-blue-1000 
+                            hover:shadow-2xl 
+                            hover:scale-105 
+                            active:ring 
+                            active:ring-gray-400 
+                            rounded 
+                            duration-200
+                            border-4
+                            border-gray-200
+                            "
+                            href='/admin/items/create'
+                    >
+                        在庫作成
+                    </InertiaLink>
+                </div>
+                <div className="overflow-x-auto bg-white rounded shadow border-solid border-4 border-gray-200">
                     <table className="w-full whitespace-nowrap table-auto">
                         <thead className="text-black bg-gray-100">
                             <tr className="font-bold text-left">

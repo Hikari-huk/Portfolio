@@ -21,9 +21,6 @@ export default function Welcome(props) {
             </Link>
               {props.auth.user ? (
                 <nav class="hidden lg:flex gap-12 ">
-                  <NavLink href={route('welcome')} active={route().current('welcome')}>
-                      Home
-                  </NavLink>
                   <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                       Dashboard
                   </NavLink>
@@ -158,18 +155,14 @@ export default function Welcome(props) {
           データ上で実験器具を管理するために<br/>管理者と学生ユーザで機能を割り振りしている<br/>
         </p>
         
-        {props.auth.user ? (
-          <div>
-            <a href={route('logout')} class="inline-block bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">Log out</a>
-          </div>
-        ):(
+        
         <div class="flex justify-center">
           <div class="w-full flex flex-col sm:flex-row sm:justify-center gap-2.5">
               <Link href={route('register')} class="inline-block bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">学生の新規登録</Link>
               <Link href={route('admin.register')} class="inline-block bg-gray-200 hover:bg-gray-300 focus-visible:ring ring-indigo-300 text-gray-500 active:text-gray-700 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">管理者の新規登録</Link>
           </div>
-          </div>
-        )}
+        </div>
+        
       </div>
     </section>
   </div>

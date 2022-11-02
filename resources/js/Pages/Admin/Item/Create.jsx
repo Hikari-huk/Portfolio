@@ -34,7 +34,7 @@ const Create = (props) => {
         >
         <Head title="Create" />
         <div className="flex justify-center py-12 px-12 md:px-24 lg:px-40 xl:px-56 shodow">
-                <div class="w-full bg-white py-10 sm:py-10 lg:py-12 rounded-md">
+                <div class="w-full bg-white py-10 sm:py-10 lg:py-12 rounded-md border-solid border-4 border-gray-200">
                     <div class="max-w-screen-xl px-4 md:px-8 mx-auto">
                         <form name="createForm" onSubmit={handleSubmit}>
                             <div className="flex flex-col w-full">

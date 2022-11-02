@@ -24,7 +24,7 @@ const Index = (props) => {
                             w-auto
                             h-12
                             px-6
-                            bg-gray-300
+                            bg-white
                             text-xl
                             text-black 
                             hover:text-blue-800
@@ -34,14 +34,17 @@ const Index = (props) => {
                             active:ring 
                             active:ring-gray-400 
                             rounded 
-                            duration-200"
+                            duration-200
+                            border-4
+                            border-gray-200
+                            "
                             href="/orders/create"
                     >
                         新規注文
                     </InertiaLink>
                 </div>
                 
-                <div className="overflow-x-auto bg-white rounded shadow border-solid border-4 border-gray-300">
+                <div className="overflow-x-auto bg-white rounded shadow border-solid border-4 border-gray-200">
                     <table className="w-full whitespace-nowrap table-auto">
                         <thead className="text-black bg-gray-100">
                             <tr className="font-bold text-left">
@@ -56,21 +59,21 @@ const Index = (props) => {
                                 <tr key={order.id} className="">
                                     <td className="border-t">
                                         <h1
-                                            className="flex items-center px-6 py-4 focus:text-indigo-700 focus:outline-none"
+                                            className="flex items-center px-6 py-4 focus:text-indigo-700 focus:outline-none text-base"
                                         >
                                             {order.name}
                                         </h1>
                                     </td>
                                     <td className="border-t">
                                         <h1
-                                            className="flex items-center px-6 py-4 focus:text-indigo-700 focus:outline-none"
+                                            className="flex items-center px-6 py-4 focus:text-indigo-700 focus:outline-none text-base"
                                         >
                                             {order.number}
                                         </h1>
                                     </td>
                                     <td className="border-t">
                                         <h1
-                                            className="flex items-center px-6 py-4 focus:text-indigo-700 focus:outline-none"
+                                            className="flex items-center px-6 py-4 focus:text-indigo-700 focus:outline-none text-base"
                                         >
                                             {order.user.name}
                                         </h1>

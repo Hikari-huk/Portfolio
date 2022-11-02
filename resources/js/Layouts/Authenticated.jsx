@@ -10,16 +10,13 @@ export default function Authenticated({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     return (
-        <div class="max-w-screen-2xl mx-auto bg-gray-100">
+        <div class="max-w-screen-2xl mx-auto bg-white">
             <div class="flex justify-between items-center border-b py-4 lg:py-8 bg-white">
                 <Link href="/" class="mx-6 inline-flex items-center text-black-800 text-xl lg:text-2xl font-bold gap-2.5" aria-label="logo">
                     <AppPortfolioLogo className="block h-8 w-auto text-gray-500" />
                     Lab Manager
                 </Link>
                 <nav class="hidden lg:flex gap-12 ">
-                    <NavLink href={route('welcome')} active={route().current('welcome')}>
-                        Home
-                    </NavLink>
                     <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                         Dashboard
                     </NavLink>
