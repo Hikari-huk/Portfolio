@@ -64,6 +64,10 @@ Route::group(['middleware' => ['auth:admin']], function(){
     Route::post('/admin/items/{item}',  [ItemController::class, 'update']);
     Route::delete('/admin/items/{item}',  [ItemController::class, 'delete']);
     Route::get('/admin/items/{item}/edit',  [ItemController::class, 'edit']);
+    
+    Route::get('/admin/orders', [OrderController::class,'adminIndex'])->name('admin.order.index');
+    Route::get('/admin/orders/{order}', [OrderController::class,'adminShow']);
+    Route::post('/admin/orders/{order}', [OrderController::class, 'adminApprove']);
 });
 
 require __DIR__.'/auth.php';

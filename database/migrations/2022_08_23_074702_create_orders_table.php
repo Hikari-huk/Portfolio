@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger("number")->comment('欲しい数');
             $table->string("url")->comment('欲しい商品のURL');
             $table->string("reason")->comment('欲しい理由');
+            $table->boolean('approve')->nullable();
             $table->timestamps();
         });
     }

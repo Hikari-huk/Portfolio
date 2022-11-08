@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 import { InertiaLink, usePage } from "@inertiajs/inertia-react";
-import Authenticated from '@/Layouts/Authenticated';
+import AdminAuthenticated from '@/Layouts/AdminAuthenticated';
 import { Head, Link} from '@inertiajs/inertia-react';
+import  Modal  from 'react-modal';
+
 
 const Index = (props) => {
     const { orders } = props;
-    console.log(orders);
     
     const returnApprove = (isApprove) => {
       if(isApprove === 1){
@@ -17,8 +18,9 @@ const Index = (props) => {
           return '差し置き';
       } 
     };
+    
     return (
-        <Authenticated
+        <AdminAuthenticated
             auth={props.auth}
             errors={props.errors}
             header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">注文リスト</h2>}
@@ -26,34 +28,6 @@ const Index = (props) => {
         <Head title="注文リスト" />
         <div className="py-24">
             <div className="container mx-auto">
-            
-                <div className="flex mb-6">
-                    <InertiaLink
-                        className=
-                            "flex items-center
-                            w-auto
-                            h-12
-                            px-6
-                            bg-white
-                            text-xl
-                            text-black 
-                            hover:text-blue-800
-                            hover:bg-blue-1000 
-                            hover:shadow-2xl 
-                            hover:scale-105 
-                            active:ring 
-                            active:ring-gray-400 
-                            rounded 
-                            duration-200
-                            border-4
-                            border-gray-200
-                            "
-                            href="/orders/create"
-                    >
-                        新規注文
-                    </InertiaLink>
-                </div>
-                
                 <div className="overflow-x-auto bg-white rounded shadow border-solid border-4 border-gray-200">
                     <table className="w-full whitespace-nowrap table-auto">
                         <thead className="text-black bg-gray-100">
@@ -116,7 +90,7 @@ const Index = (props) => {
                                         >
                                             <InertiaLink
                                                 tabIndex="1"
-                                                href={"/orders/"+order.id}
+                                                href={"/admin/orders/"+order.id}
                                             >
                                             詳細
                                             </InertiaLink>
@@ -139,7 +113,7 @@ const Index = (props) => {
                 </div>
             </div>
         </div>
-        </Authenticated>
+        </AdminAuthenticated>
     );
 };
 
