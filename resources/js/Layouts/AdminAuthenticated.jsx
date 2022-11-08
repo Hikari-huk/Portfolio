@@ -23,6 +23,9 @@ export default function Authenticated({ auth, header, children }) {
                    <NavLink href={route('admin.item.index')} active={route().current('admin.item.index')}>
                         在庫一覧
                     </NavLink>
+                    <NavLink href={route('admin.order.index')} active={route().current('admin.order.index')}>
+                        欲しいものリスト
+                    </NavLink>
                 </nav>
                 <div  class="mx-6 hidden lg:flex ">
                     <Dropdown>
@@ -92,6 +95,11 @@ export default function Authenticated({ auth, header, children }) {
                 <div className="bg-white pt-2 pb-3 space-y-1">
                     <ResponsiveNavLink href={route('admin.item.index')} active={route().current('admin.item.index')}>
                         在庫一覧
+                    </ResponsiveNavLink>
+                </div>
+                <div className="bg-white pt-2 pb-3 space-y-1">
+                    <ResponsiveNavLink href={route('admin.item.index')} active={route().current('admin.order.index')}>
+                        欲しいものリスト
                     </ResponsiveNavLink>
                 </div>
 

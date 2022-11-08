@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
         if(config('app.env') === "production"){
             \URL::forceScheme('https');   
         }
-        //githubにアップロードする際に消す
+        // githubにアップロードする際に消す
         // else{
         //     \URL::forceScheme('https'); 
         // }

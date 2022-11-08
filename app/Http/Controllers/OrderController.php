@@ -67,5 +67,23 @@ class OrderController extends Controller
         return redirect('/orders');
     }
     
+    //Admin用のOrderList
+    //Orderリストの表示
+    public function adminIndex(){
+        $orders = Order::with('user')->get();
+        return Inertia::render('Admin/Order/OrderList',['orders' => $orders]);
+    }
+    
+    //Orderの表示
+    public function adminShow(Order $order){
+        $order = Order::with('user')->find($order->id);
+        return Inertia::render('Admin/Order/ShowOrder',['order' => $order]);
+    }
+    
+    public function adminApprove(Order $order, Request $request){
+        $order->approve = $request->approve;
+        $order->save();
+        return redirect('/admin/orders');
+    }
     
 }
